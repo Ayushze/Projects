@@ -1,0 +1,42 @@
+    <h2 mat-dialog-title>{{ dialogTitle }}</h2>
+    <mat-dialog-content>
+      <form [formGroup]="addProductForm" class="product-add__form">
+        <div class="product-add__inputs">
+        <mat-form-field class="product-add__field">
+          <input matInput name="name" placeholder="Name*" type="text" formControlName="name">
+          <mat-error *ngIf="name.hasError('required')">{{ errorMessages.name }}</mat-error>
+          <mat-error *ngIf="name.hasError('nameTaken')">{{ errorMessages.nameTaken }}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="product-add__field">
+          <input matInput name="protein" placeholder="Protein / 100g*" type="number" formControlName="protein">
+          <mat-error>{{ errorMessages.number }}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="product-add__field">
+          <input matInput name="carbs" placeholder="Carbs / 100g*" type="number" formControlName="carbs">
+          <mat-error>{{ errorMessages.number }}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="product-add__field">
+          <input matInput name="fats" placeholder="Fats / 100g*" type="number" formControlName="fats">
+          <mat-error>{{ errorMessages.number }}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="product-add__field">
+          <input matInput name="calories" placeholder="Calories / 100g*" type="number" formControlName="calories">
+          <mat-error>{{ errorMessages.number }}</mat-error>
+        </mat-form-field>
+        </div>
+      </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button 
+      *ngIf="mode === 'add'" 
+      mat-raised-button 
+      color="primary" 
+      class="product-add__button" 
+      (click)="onAddProduct()">Add product</button>
+      <button 
+      *ngIf="mode === 'edit'" 
+      mat-raised-button 
+      color="primary" 
+      class="product-add__button" 
+      (click)="onUpdateProduct()">Save product</button>
+    </mat-dialog-actions>

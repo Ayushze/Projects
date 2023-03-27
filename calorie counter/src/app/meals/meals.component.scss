@@ -1,0 +1,40 @@
+@import "~sass/mixins";
+
+.meals {
+  list-style: none;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @include breakpoint(tablet) {
+    flex-direction: row;
+  }
+
+  &__item {
+    width: 100%;
+    margin-bottom: 4rem;
+
+    @include breakpoint(tablet) {
+      width: 47%;
+    }
+  }
+}
+
+.meal-add-container {
+  margin-bottom: 30px;
+}
+
+.new-meal-btn {
+  margin-bottom: 2rem;
+}
+
+.meal-search {
+  width: 100%;
+
+  &__form-field {
+    width: 100%;
+  }
+}
+

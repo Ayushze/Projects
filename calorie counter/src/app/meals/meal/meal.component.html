@@ -1,0 +1,49 @@
+<mat-card class="meal">
+  <div class="meal__header">
+    <div class="meal__image-container">
+      <img [src]="meal.imageUrl" class="meal__image">
+    </div>
+    <div class="meal__image-overlay"></div>
+    <div class="meal__actions">
+      <button mat-icon-button (click)="onUpdate(meal, meal._id)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="onDelete(meal._id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <h3 class="meal__name">{{ meal.name }}</h3>
+  </div>
+  <div class="meal__content">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="meal__content-title">
+          Ingredients
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <table class="ingredients" *ngIf="meal.ingredients.length > 0">
+        <tr class="ingredients__row">
+          <th>Name</th>
+          <th>P / C / F / Cal</th>
+          <!-- <th>Carbs</th>
+          <th>Fats</th>
+          <th>Calories</th> -->
+        </tr>
+        <tr class="ingredients__row" *ngFor="let ingredient of meal.ingredients">
+          <td>{{ ingredient.name }} ({{ ingredient.weight }}g)</td>
+          <td>{{ ingredient.protein }} / {{ ingredient.carbs }} / {{ ingredient.fats }} / {{ingredient.calories }}</td>
+          <!-- <td>{{ ingredient.carbs }}</td>
+          <td>{{ ingredient.fats }}</td>
+          <td>{{ ingredient.calories }}</td> -->
+        </tr>
+        <tr class="ingredients__row">
+          <th>Total</th>
+          <th>{{ meal.protein }} / {{ meal.carbs }} / {{ meal.fats }} / {{ meal.calories }}</th>
+          <!-- <th>{{ meal.carbs }}</th>
+          <th>{{ meal.fats }}</th>
+          <th>{{ meal.calories }}</th> -->
+        </tr>
+      </table>
+    </mat-expansion-panel>
+  </div>
+</mat-card>
